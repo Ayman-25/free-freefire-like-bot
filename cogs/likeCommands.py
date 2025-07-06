@@ -117,7 +117,7 @@ class LikeCommands(commands.Cog):
                         await self._send_player_not_found(ctx, uid)
                         return
                     if response.status ==429 :
-                        await self._send_api_limit_reached
+                        await self._
                     if response.status != 200:
                         print(f"API Error: {response.status} - {await response.text()}")
                         await self._send_api_error(ctx)
@@ -159,21 +159,7 @@ class LikeCommands(commands.Cog):
         embed.add_field(name="Tip", value="Make sure that:\n- The UID is correct\n- The player is not private", inline=False)
         await ctx.send(embed=embed, ephemeral=True)
         
-    async def _send_api_limit_reached(self, ctx):
-        embed = discord.Embed(
-            title="⚠️ API Rate Limit Reached",
-            description="You have reached the maximum number of requests allowed by the API.",
-            color=0xF1C40F  # jaune/orangé
-        )
-        embed.add_field(
-            name="Tip",
-            value=(
-                "- Wait a few minutes before trying again\n"
-                "- Consider upgrading your API plan if this happens often\n"
-                "- Avoid sending too many requests in a short time"
-            ),
-            inline=False
-        )
+
         await ctx.send(embed=embed, ephemeral=True)
 
 
